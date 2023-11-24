@@ -1,0 +1,46 @@
+.main-header{
+    height: 5rem;    
+
+    .container{
+        margin: 0 auto;
+        max-width: 65rem;        
+        width: 100%;
+        padding: 0 2.5rem;        
+    
+        .wrapper{            
+            display: flex;
+            align-items: center;   
+            justify-content: space-between;         
+            .logo-box{
+                padding: 1rem 0;
+            }
+            .logo{              
+                max-width: 100%;              
+                max-height: 5rem;
+                height: 50%;
+                object-fit: contain;
+                vertical-align: middle;
+            }        
+
+        }
+    }
+
+    .container:after{                
+        content: "";
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0 0.9375rem;
+        display: block;        
+    }
+}
+
+@media only screen and (max-width:767px){
+     .main-header{
+        .container{
+            padding: 0 1rem;
+            .logo{                
+                max-width: 100%;
+                width: 85%;
+            }
+        }
+     }
+}

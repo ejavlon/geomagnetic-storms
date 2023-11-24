@@ -1,18 +1,17 @@
-.info-section {
-  padding-top: 5rem;
-}
 .info-section .container {
   margin: 0 auto;
   max-width: 65rem;
   width: 100%;
-  padding: 0 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: calc(100vh - 12.5rem);
+  height: calc(100vh - 80px);
+  padding: 2.5rem;
+  box-sizing: border-box;
 }
 .info-section .container .loader {
-  margin: 0 auto;
+  display: flex;
+  height: 27em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .info-section .container .flex-box {
   display: flex;
@@ -21,17 +20,25 @@
 }
 .info-section .container .flex-box .row {
   display: flex;
-  flex-direction: column;
-  margin-top: -5rem;
-  padding: 1rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 24px #d3eaff;
+  align-items: center;
+}
+.info-section .container .flex-box .row div {
+  margin: 0;
 }
 .info-section .container .flex-box .row .toggle-btn {
-  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+}
+.info-section .container .flex-box .row .toggle-btn button {
+  height: 3rem;
 }
 .info-section .container .flex-box .row .menu-item {
-  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+}
+.info-section .container .flex-box .row .menu-item .MuiInputBase-root {
+  height: 3rem;
+}
+.info-section .container .flex-box .line-chart {
+  padding-top: 5rem;
 }
 
 @media only screen and (max-width: 767px) {

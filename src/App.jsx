@@ -11,13 +11,7 @@ function App() {
         <Header/> 
             <Routes>
               <Route path="/" exact element={<Info/>}/>
-              {/* <Route path="/" exact element={<Info/>}/>                        
-              <Route path="/projects" element={<Projects/>}/>  
-              <Route path="/blog" element={<Blog/>}/>
-              <Route path="/blog/:id" element={<Post/>}/>            
-              <Route path="/auth/6nf4rd5" element={<Login/>}/>
-              <Route path="/admin/6nf4rd5" element={<Controller/>} />              
-              <Route path="*" element={<Page404/>}/>               */}
+              {/* <Route path="/blog" element={<Blog/>}/>               */}
             </Routes>           
         {/* <Footer/>                   */}
       </BrowserRouter>

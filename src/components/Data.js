@@ -1,5 +1,5 @@
 let stDate = "";
-const time = ["00:00","03:00","06:00","09:00","12:00","15:00","18:00","21:00"];
+const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
 
 export async function fetchData1() {        
     let data = await fetchData2();
@@ -23,12 +23,28 @@ export async function fetchData1() {
         data.push(data3);        
     }catch(e){
         console.log(e);
+    }    
+
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data[i].length; j++) {
+            if(i === 0) 
+                data[i][j].time = time[j+1];
+            else                
+                data[i][j].time = time[j];
+        }
+
+        if(i !== data.length-1){
+            data[i+1].unshift(data[i].pop());
+            data[i+1][0].date = data[i+1][1].date;
+        }
     }
-    //console.log(data);
+    data[data.length-1].pop();
+
   return data;
 }
 
-export async function fetchData2(){
+
+async function fetchData2(){
     let data = [];
     try{
         const response = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");        

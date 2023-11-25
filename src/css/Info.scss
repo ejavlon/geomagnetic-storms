@@ -27,7 +27,7 @@
                 
                 div{
                     margin: 0;     
-                    transform: rotate(180deg);               
+                    // transform: rotate(180deg);               
                 }
 
                 .toggle-btn{
@@ -52,6 +52,10 @@
                 // width:360px;            
                 // overflow-x: scroll;
                 padding-top: 5rem;
+
+                tspan{
+                    font-size: 10px;                                        
+                }
             }
         }
 

@@ -40,6 +40,9 @@
 .info-section .container .flex-box .line-chart {
   padding-top: 5rem;
 }
+.info-section .container .flex-box .line-chart tspan {
+  font-size: 10px;
+}
 
 @media only screen and (max-width: 767px) {
   .info-section .container {

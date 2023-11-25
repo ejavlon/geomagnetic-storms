@@ -167,7 +167,10 @@ const Info = ()=> {
                     
                     <div id="line-chart" className="line-chart">
                         <LineChart                                                 
-                            xAxis={[{ scaleType: 'point', data: time}]}
+                            xAxis={[{ 
+                                scaleType: 'point',
+                                data: time
+                            }]}
                             series={[
                                 {
                                 data: value,label:"Кп индеx"

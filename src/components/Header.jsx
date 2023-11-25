@@ -2,7 +2,6 @@ import '../css/Header.css';
 import React, { memo } from 'react';
 import logo from '../assets/logo.png';
 import { NavLink } from 'react-router-dom';
-import CurrentDate from './CurrentDate';
 
 const Header = ()=> {
   
@@ -25,7 +24,11 @@ const Header = ()=> {
                   </NavLink>                  
                 </div>   
                 <div className="current-date">
-                  {<CurrentDate/>}
+                  <nav>
+                    <NavLink className="about" to="/about">
+                        Маълумот
+                    </NavLink>  
+                  </nav>
                 </div>
             </div>
         </div>

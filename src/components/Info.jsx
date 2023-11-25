@@ -8,11 +8,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Container from '@mui/material/Container';
-import { ChartsReferenceLine } from '@mui/x-charts';
+import Stack from '@mui/material/Stack';
 import { fetchData1 } from './Data';
 import { v4 as uuidv4 } from 'uuid';
 import { FadeLoader } from 'react-spinners';
+import DataTable from './DataTable';
+import LeveleList from './LeveleList';
 
 
 const Info = ()=> {
@@ -24,7 +25,7 @@ const Info = ()=> {
     const[loading,setLoading] = useState(true);
     const[weekly,setWeekly] = useState(false);
 
-    const[data,setData] = useState([]);
+    const[data,setData] = useState([]);    
 
     // toggle buttons
     const [alignment, setAlignment] = useState('daily');
@@ -35,7 +36,7 @@ const Info = ()=> {
             replcaeToWeeklyGraph();
         }else{
             setWeekly(false);
-            changeGraphDate(formatDaete());
+            changeGraphDate(formatDate());
         }
     };
 
@@ -56,8 +57,7 @@ const Info = ()=> {
             for (let j = 0; j < data[i].length; j++) {                
                 _time.push(data[i][j].time);
                 _value.push(data[i][j].value);                                                
-            }       
-            
+            }                   
             setTime(_time);
             setValue(_value);                         
             setLoading(false);                     
@@ -78,8 +78,6 @@ const Info = ()=> {
                     max = arr[j].value;
                     index = j;
                 }
-                // _time.push(`${arr[j].time}\n${_currentItemDate}`)
-                // _value.push(arr[j].value);
             }
             _time.push(`${data[i][index].time}\n―𝅸𝅷𝅷𝅸𝅷𝅷\n${_currentItemDate}`)
             _value.push(data[i][index].value);            
@@ -87,27 +85,42 @@ const Info = ()=> {
         setTime(_time);
         setValue(_value);
     }
+    
+    const dataBySelectedDate = ()=>{   
+        let result = [];   
+        if(weekly){
+            for (let i = 0; i < data.length; i++) {
+              let max = 0;  
+              for (let j = 0; j < data[i].length; j++) {
+                result.push(data[i][j]);                
+              }            
+            }
+            return result.reverse();
+        }
 
-    const checkWindowWidth = ()=>{
-        const _width = window.innerWidth;
-        if(_width > 767) return;
-
-        const lineChartWrapper = document.getElementById("line-chart");
-
-
+        for (let i = 0; i < data.length; i++) {
+            if(data[i][0].date === date){
+                result = data[i];
+                break;
+            }            
+        }        
+        return result;
     }
 
-    const formatDaete = ()=>{
+    const formatDate = ()=>{
         const today = new Date();
         const dd = today.getDate();
         const mm = today.getMonth() + 1;
         const yyyy = today.getFullYear();    
-
         return `${yyyy}-${mm.toString().padStart(2, '0')}-${dd}`;
     }
 
     window.addEventListener('resize', function(event) {     
-       setLoading(true);        
+       if(this.window.screen > 767){
+        console.log('true');
+       }else{
+        console.log('false');
+       }        
     });
     
     useEffect(()=>{    
@@ -117,14 +130,14 @@ const Info = ()=> {
             }catch(e){
                 console.log(e);
             }finally{
-               setDate(formatDaete());
+               setDate(formatDate());
                if(alignment === 'daily'){
-                    changeGraphDate(formatDaete());   
+                    changeGraphDate(formatDate());   
                }else{
                      replcaeToWeeklyGraph();
-               }                         
+               }                   
                const w = document.getElementById("container");
-               setContainerWidth(w.offsetWidth);     
+               setContainerWidth(w.offsetWidth);                                           
                setLoading(false);
             }
         })();        
@@ -165,8 +178,7 @@ const Info = ()=> {
                             </Select>
                         </FormControl>    
                     </div>                    
-                    
-                    <div id="line-chart" className="line-chart">
+                    <Stack className="line-chart" >
                         <LineChart                                                 
                             xAxis={[{ 
                                 scaleType: 'point',
@@ -179,10 +191,13 @@ const Info = ()=> {
                             ]}                                                  
                             width={window.screen.width > 765 ? (containerWidth - 80) : (containerWidth  - 32) }
                             height={window.screen.width > 765 ? 450 : 350}
-                        />                        
-                    </div>               
-                </div>
+                        />
+                    </Stack>       
+                    <LeveleList/>               
+                    <DataTable data={dataBySelectedDate()}/>                    
+                </div>                         
             }
+            
         </div>
     </section>
   )

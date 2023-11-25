@@ -33,7 +33,6 @@
                 .toggle-btn{
                     padding: .5rem;
                     
-
                     button{
                         height: 3rem;
                     }
@@ -42,10 +41,6 @@
                 .menu-item{
                     padding: .5rem;
 
-                    .MuiToggleButtonGroup-root,.MuiFormControl-root{
-                        // width: 8.75rem;
-                    }
-
                     .MuiSelect-select{
                         padding-top: 1.0625rem;
                     }
@@ -53,8 +48,6 @@
             }
 
             .line-chart{    
-                // width:360px;            
-                // overflow-x: scroll;
                 padding-top: 5rem;
 
                 tspan{

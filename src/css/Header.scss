@@ -22,7 +22,20 @@
                 height: 50%;
                 object-fit: contain;
                 vertical-align: middle;                
-            }        
+            }  
+            a.about{
+                opacity: .5;
+                color: #000;
+                text-decoration: none;
+            }
+            a.about:hover{
+                opacity: 1;
+                transition: 500ms ease;
+                
+            }
+            a.active{
+                opacity: 1;
+            }
 
         }
     }
@@ -40,5 +53,9 @@
         .container{
             padding: 0 1rem;            
         }
+
+        a.about{
+            font-size: .75rem;
+        }        
      }
 }

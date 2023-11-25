@@ -1,0 +1,46 @@
+.about-section .container {
+  margin: 0 auto;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  max-width: 65rem;
+}
+.about-section .container .wrapper p {
+  line-height: 1.5rem;
+  text-align: justify;
+  padding: 1rem 0;
+}
+.about-section .container .wrapper span {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.about-section .container .wrapper img {
+  width: 60rem;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.about-section .container .wrapper ul {
+  list-style: inside;
+  margin-left: 1rem;
+}
+.about-section .container .wrapper ul li {
+  margin-bottom: 1rem;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-section .container {
+    padding: 1rem;
+  }
+  .about-section .container .wrapper h4 {
+    font-size: 1.5rem;
+  }
+  .about-section .container .wrapper img {
+    width: calc(100vw - 2rem);
+    padding: 0;
+  }
+  .about-section .container .wrapper ul {
+    margin: 0;
+  }
+}/*# sourceMappingURL=About.css.map */

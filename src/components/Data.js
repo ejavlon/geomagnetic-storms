@@ -4,7 +4,7 @@ let stDate = "";
 const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
 
  export async function fetchData1() {        
-    let data = await fetchData2();
+    let data = [];
     const url = "https://services.swpc.noaa.gov/text/3-day-geomag-forecast.txt";
 
     try{
@@ -17,6 +17,9 @@ const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
         const now = new Date();
         stDate = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}-${startDate}`;
 
+        data = await fetchData2();
+        // console.log(data);
+
         const data1 = await getKValues(rows,1,startDate);
         const data2 = await getKValues(rows,2,startDate+1);
         const data3 = await getKValues(rows,3,startDate+2);               
@@ -25,9 +28,9 @@ const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
         data.push(data3);        
     }catch(e){
         console.log(e);
-    }    
+    }        
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {        
         for (let j = 0; j < data[i].length; j++) {
             if(i === 0) 
                 data[i][j].time = time[j+1];
@@ -41,8 +44,7 @@ const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
         }
     }
     data[data.length-1].pop();
-
-  return data;
+    return data;
 }
 
 
@@ -55,26 +57,26 @@ async function fetchData2(){
         let _date = "";
         let _data = [];
         for (let index = 1; index < result.length; index++) {        
-            _date = result[index][0].split(" ",2)[0];            
-            if(_date === stDate) break;
-
+            _date = result[index][0].split(" ",2)[0];   
             if(date !== _date){
                 if(date !== ""){                   
                     data.push(_data);
                     _data = new Array();                    
                 }
+                if(_date === stDate) break;                
+
                 date = _date;
             }
-
             _data.push({
                 "date" : _date,
                 "time" : result[index][0].split(" ",2)[1].substring(0,5),
                 "value" : parseFloat(result[index][1])
-            });                             
+            });                                      
         }               
     }catch(e){            
         console.log(e);
     }
+    
     return data;
 }
 

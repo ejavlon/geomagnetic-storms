@@ -1,0 +1,41 @@
+.level-list{
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;    
+    
+    .level{
+        padding: .5rem 0;
+        display: flex;
+        flex-wrap: wrap;    
+        align-items: center;
+        justify-content: space-between;
+        margin-right: .5rem;
+    }
+    .level > div{
+        display: inline-block;        
+        width: 1.5rem;
+        height: 1.5rem;        
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .level-4{
+        background-image: url('../assets/level-4.png');
+    }
+    .level-5{
+        background-image: url('../assets/level-5.png');
+    }
+    .level-6{
+        background-image: url('../assets/level-6.png');
+    }
+    .level-7{
+        background-image: url('../assets/level-7.png');
+    }
+    .level-8{
+        background-image: url('../assets/level-8.png');
+    }
+    .level-9{
+        background-image: url('../assets/level-9.png');
+    }
+}

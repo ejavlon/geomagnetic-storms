@@ -1,0 +1,39 @@
+.level-list {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.level-list .level {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.5rem;
+}
+.level-list .level > div {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.level-list .level-4 {
+  background-image: url("../assets/level-4.png");
+}
+.level-list .level-5 {
+  background-image: url("../assets/level-5.png");
+}
+.level-list .level-6 {
+  background-image: url("../assets/level-6.png");
+}
+.level-list .level-7 {
+  background-image: url("../assets/level-7.png");
+}
+.level-list .level-8 {
+  background-image: url("../assets/level-8.png");
+}
+.level-list .level-9 {
+  background-image: url("../assets/level-9.png");
+}/*# sourceMappingURL=LevelList.css.map */

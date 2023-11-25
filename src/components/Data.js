@@ -1,7 +1,9 @@
+import { memo } from "react";
+
 let stDate = "";
 const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
 
-export async function fetchData1() {        
+ export async function fetchData1() {        
     let data = await fetchData2();
     const url = "https://services.swpc.noaa.gov/text/3-day-geomag-forecast.txt";
 

@@ -2,6 +2,7 @@ import './App.css'
 import Header from './components/Header';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import Info from './components/Info';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
               <Route path="/" exact element={<Info/>}/>
               {/* <Route path="/blog" element={<Blog/>}/>               */}
             </Routes>           
-        {/* <Footer/>                   */}
+        <Footer/>                  
       </BrowserRouter>
     </div>
   )

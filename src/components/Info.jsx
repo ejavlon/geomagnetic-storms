@@ -106,13 +106,13 @@ const Info = ()=> {
         return `${yyyy}-${mm.toString().padStart(2, '0')}-${dd}`;
     }
 
-    window.addEventListener('resize', function(event) {        
-        setLoading(true);
+    window.addEventListener('resize', function(event) {     
+       setLoading(true);        
     });
     
     useEffect(()=>{    
         (async function(){
-            try{                
+            try{                              
                 setData(await fetchData1());                                
             }catch(e){
                 console.log(e);
@@ -139,7 +139,8 @@ const Info = ()=> {
                 <div className="flex-box">
                     <div className="row">                
                         <ToggleButtonGroup    
-                            className="toggle-btn"                
+                            className="toggle-btn"           
+                            sx={{width:"9rem"}}
                             color="primary"
                             value={alignment}
                             exclusive
@@ -149,7 +150,7 @@ const Info = ()=> {
                             <ToggleButton value="daily">Кун</ToggleButton>
                             <ToggleButton value="weekly">Ҳафта</ToggleButton>                    
                         </ToggleButtonGroup>       
-                        <FormControl variant="filled" sx={{ m: 1, minWidth: 120, pointerEvents: weekly ? "none" : "all",opacity: weekly ? "0.4" : "1" }} className="menu-item">
+                        <FormControl variant="filled" sx={{width:"9rem",pointerEvents: weekly ? "none" : "all",opacity: weekly ? "0.4" : "1" }} className="menu-item">
                             <InputLabel id="input">Сана</InputLabel>
                             <Select
                                 labelId="date"

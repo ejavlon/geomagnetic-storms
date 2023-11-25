@@ -1,0 +1,20 @@
+footer .container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 65rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  height: 5rem;
+}
+footer .container .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer .container .wrapper a {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.5019607843);
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+}/*# sourceMappingURL=Footer.css.map */

@@ -4,7 +4,7 @@
         margin: 0 auto;
         max-width: 65rem;
         width: 100%;
-        height: calc(100vh - 80px);
+        min-height: calc(100vh - 10rem);
         padding: 2.5rem;       
         box-sizing: border-box;
         
@@ -42,8 +42,12 @@
                 .menu-item{
                     padding: .5rem;
 
-                    .MuiInputBase-root{
-                        height: 3rem;
+                    .MuiToggleButtonGroup-root,.MuiFormControl-root{
+                        // width: 8.75rem;
+                    }
+
+                    .MuiSelect-select{
+                        padding-top: 1.0625rem;
                     }
                 }
             }

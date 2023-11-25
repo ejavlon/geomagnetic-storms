@@ -1,10 +1,10 @@
 import '../css/Header.css';
-import React from 'react';
+import React, { memo } from 'react';
 import logo from '../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import CurrentDate from './CurrentDate';
 
-export default function Header() {
+const Header = ()=> {
   
   const currentDate = ()=>{
     const today = new Date();
@@ -32,3 +32,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default memo(Header);

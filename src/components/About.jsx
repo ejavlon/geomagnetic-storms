@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import Typography from '@mui/material/Typography';
 import storms from '../assets/storms.png';
 import '../css/About.css';
-import { Container } from '@mui/material';
 
 const About = () => {
   return (

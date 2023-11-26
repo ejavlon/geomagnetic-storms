@@ -4,16 +4,6 @@ import logo from '../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 
 const Header = ()=> {
-  
-  const currentDate = ()=>{
-    const today = new Date();
-    const dd = today.getDate();
-    const mm = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
-
-    const formattedDate = `${dd}.${mm.toString().padStart(2, '0')}.${yyyy}`;
-    return formattedDate;
-  }
   return (
     <header id="main-header" className="main-header">
         <div className="container">

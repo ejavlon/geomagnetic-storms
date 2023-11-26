@@ -1,8 +1,13 @@
 .level-list {
   width: 100%;
+  margin-top: 0.5rem;
   padding: 2rem 0;
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125px 1.5rem #d3eaff;
 }
 .level-list .level {
   padding: 0.5rem 0;
@@ -10,6 +15,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  font-size: 0.75rem;
   margin-right: 0.5rem;
 }
 .level-list .level > div {
@@ -36,4 +42,10 @@
 }
 .level-list .level-9 {
   background-image: url("../assets/level-9.png");
+}
+
+@media only screen and (max-width: 767px) {
+  .level-list {
+    padding: 0;
+  }
 }/*# sourceMappingURL=LevelList.css.map */

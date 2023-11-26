@@ -33,6 +33,12 @@
   .about-section .container {
     padding: 1rem;
   }
+  .about-section .container .wrapper p {
+    padding: 0.5rem 0;
+  }
+  .about-section .container .wrapper span {
+    font-size: 1rem;
+  }
   .about-section .container .wrapper h4 {
     font-size: 1.5rem;
   }

@@ -15,7 +15,6 @@ import { FadeLoader } from 'react-spinners';
 import DataTable from './DataTable';
 import LeveleList from './LeveleList';
 
-
 const Info = ()=> {
     const[containerWidth,setContainerWidth] = useState(0);
     
@@ -114,14 +113,6 @@ const Info = ()=> {
         const yyyy = today.getFullYear();    
         return `${yyyy}-${mm.toString().padStart(2, '0')}-${dd}`;
     }
-
-    window.addEventListener('resize', function(event) {     
-       if(this.window.screen > 767){
-        console.log('true');
-       }else{
-        console.log('false');
-       }        
-    });
     
     useEffect(()=>{    
         (async function(){

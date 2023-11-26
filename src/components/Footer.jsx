@@ -1,9 +1,8 @@
 import React, { memo } from 'react';
-import '../css/Footer.css';
 import { Link } from 'react-router-dom';
+import '../css/Footer.css';
 
-const  Footer = ()=> {
-    
+const  Footer = ()=> {    
   return (
     <footer>
         <div className="container">

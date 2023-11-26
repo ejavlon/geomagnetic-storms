@@ -36,4 +36,4 @@ const DataTable = ({data})=> {
     </TableContainer>
   )
 }
-export default DataTable;
+export default memo(DataTable);

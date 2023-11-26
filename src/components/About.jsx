@@ -1,9 +1,14 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Typography from '@mui/material/Typography';
+import MySkeleton from './MySkeleton';
 import storms from '../assets/storms.png';
 import '../css/About.css';
 
-const About = () => {
+const About = () => {  
+  const[loading,setLoading] = useState(true);
+  useEffect(()=>{    
+    setLoading(false);
+  },[])
   return (
     <section id='about-section' className='about-section'>
       <div className="container">
@@ -12,8 +17,13 @@ const About = () => {
           <Typography mb={4} fontWeight={500} variant="h4" gutterBottom>
             Геомагнит бўронлари
           </Typography>
-          <div className="img">
-            <img src={storms} alt="stroms" />
+          
+          <div className="img">          
+            {
+              loading ? <MySkeleton/>
+              :
+              <img src={storms} alt="stroms" />
+            }          
           </div>
 
           <Typography variant="body1" gutterBottom>

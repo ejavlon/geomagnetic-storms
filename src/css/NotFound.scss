@@ -1,0 +1,23 @@
+.notfound{    
+    .container{
+        margin: 0 auto;
+        max-width: 65rem;        
+        width: 100%;
+        padding: 2.5rem;  
+        box-sizing: border-box;
+        min-height: calc(100vh - 10rem);
+
+
+        .box{
+            display: flex;
+            min-height: calc(100vh - 15rem);            
+            align-items: center;
+            justify-content: center;
+
+            h1{
+                font-size: 2rem;
+                font-weight: 200;
+            }
+        }
+    }
+}

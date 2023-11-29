@@ -1,9 +1,11 @@
-import './App.css'
 import Header from './components/Header';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import Info from './components/Info';
 import Footer from './components/Footer';
 import About from './components/About';
+import NotFound from './components/NotFound';
+
+import './App.css'
 
 function App() {
 
@@ -14,7 +16,7 @@ function App() {
             <Routes>
               <Route path="/" exact element={<Info/>}/>
               <Route path="/about" element={<About/>}/>    
-              <Route path="*" element={""}/>
+              <Route path="*" element={<NotFound/>}/>
             </Routes>           
         <Footer/>                  
       </BrowserRouter>

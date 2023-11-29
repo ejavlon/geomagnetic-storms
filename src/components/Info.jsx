@@ -1,4 +1,3 @@
-import '../css/Info.css';
 import React, { memo, useEffect, useState } from 'react'
 
 import { LineChart } from '@mui/x-charts/LineChart';
@@ -14,6 +13,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { FadeLoader } from 'react-spinners';
 import DataTable from './DataTable';
 import LeveleList from './LeveleList';
+
+import '../css/Info.css';
 
 const Info = ()=> {
     const[containerWidth,setContainerWidth] = useState(0);

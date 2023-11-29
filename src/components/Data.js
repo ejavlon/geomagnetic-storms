@@ -14,13 +14,11 @@ const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
         const startDate = parseInt(rows[0].split(" ")[0]);            
         const now = new Date();
         stDate = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}-${startDate}`;
+        data = await fetchData2();        
 
-        data = await fetchData2();
-        // console.log(data);
-
-        const data1 = await getKValues(rows,1,startDate);
-        const data2 = await getKValues(rows,2,startDate+1);
-        const data3 = await getKValues(rows,3,startDate+2);               
+        const data1 = await getKValues(rows,1,0);
+        const data2 = await getKValues(rows,2,1);
+        const data3 = await getKValues(rows,3,2);               
         data.push(data1);     
         data.push(data2);
         data.push(data3);        
@@ -82,10 +80,11 @@ async function fetchData2(){
 
 const getKValues = async(rows,columndIndex,day)=>{    
     let data = [];
-    const now = new Date();
+    let _date = new Date(stDate);
+    _date.setDate(_date.getDate() + day);    
 
     try{        
-        const date = `${now.getFullYear()}-${now.getMonth()+1}-${day}`;
+        const date = `${_date.getFullYear()}-${(_date.getMonth()+1).toString().padStart(2,0)}-${(_date.getDate()).toString().padStart(2,0)}`;                
         const inx = columndIndex === 1 ? 8 : columndIndex === 2 ? 14 : 20;        
         for (let index = 2; index < rows.length-1; index++) {            
             data.push({
@@ -96,6 +95,6 @@ const getKValues = async(rows,columndIndex,day)=>{
         }        
     }catch(e){
         console.log(e);
-    }
+    }    
     return data;
 }

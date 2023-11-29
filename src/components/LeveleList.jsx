@@ -17,7 +17,7 @@ const LeveleList =()=> {
             <div className="level-7"></div>&nbsp; Кучли бўрон
         </div>
         <div className="level">
-            <div className="level-8"></div>&nbsp; Жуда кучлик бўрон
+            <div className="level-8"></div>&nbsp; Жуда кучли бўрон
         </div>
         <div className="level">
             <div className="level-9"></div>&nbsp; Экстремал бўрон

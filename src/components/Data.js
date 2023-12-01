@@ -84,7 +84,7 @@ const getKValues = async(rows,columndIndex,day)=>{
     _date.setDate(_date.getDate() + day);    
 
     try{        
-        const date = `${_date.getFullYear()}-${(_date.getMonth()+1).toString().padStart(2,0)}-${(_date.getDate()).toString().padStart(2,0)}`;                
+        const date = `${_date.getFullYear()}-${(_date.getMonth()+1).toString().padStart(2,'0')}-${(_date.getDate()).toString().padStart(2,'0')}`;    
         const inx = columndIndex === 1 ? 8 : columndIndex === 2 ? 14 : 20;        
         for (let index = 2; index < rows.length-1; index++) {            
             data.push({

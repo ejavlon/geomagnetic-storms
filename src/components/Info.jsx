@@ -112,13 +112,13 @@ const Info = ()=> {
         const dd = today.getDate();
         const mm = today.getMonth() + 1;
         const yyyy = today.getFullYear();    
-        return `${yyyy}-${mm.toString().padStart(2, '0')}-${dd}`;
+        return `${yyyy}-${mm.toString().padStart(2, '0')}-${dd.toString().padStart(2,'0')}`;
     }
     
     useEffect(()=>{    
         (async function(){
             try{                              
-                setData(await fetchData1());                                
+                setData(await fetchData1());                      
             }catch(e){
                 console.log(e);
             }finally{

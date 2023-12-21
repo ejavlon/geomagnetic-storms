@@ -89,13 +89,12 @@ const Info = ()=> {
     const dataBySelectedDate = ()=>{   
         let result = [];   
         if(weekly){
-            for (let i = 0; i < data.length; i++) {
-              let max = 0;  
+            for (let i = 0; i < data.length; i++) {              
               for (let j = 0; j < data[i].length; j++) {
                 result.push(data[i][j]);                
               }            
             }
-            return result.reverse();
+            return result;
         }
 
         for (let i = 0; i < data.length; i++) {

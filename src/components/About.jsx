@@ -12,8 +12,7 @@ const About = () => {
   return (
     <section id='about-section' className='about-section'>
       <div className="container">
-        <div className="wrapper">
-          <h1></h1>
+        <div className="wrapper">          
           <Typography mb={4} fontWeight={500} variant="h4" gutterBottom>
             Геомагнит бўронлари
           </Typography>

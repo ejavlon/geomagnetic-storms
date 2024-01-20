@@ -1,197 +1,103 @@
 import React, { memo, useEffect, useState } from 'react'
+import Typography from '@mui/material/Typography';
+import MySkeleton from './MySkeleton';
+import storms from '../assets/storms.png';
+import '../css/About.css';
 
-import { LineChart } from '@mui/x-charts/LineChart';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Stack from '@mui/material/Stack';
-import { fetchData1 } from './Data';
-import { v4 as uuidv4 } from 'uuid';
-import { FadeLoader } from 'react-spinners';
-import DataTable from './DataTable';
-import LeveleList from './LeveleList';
-
-import '../css/Info.css';
-
-const Info = ()=> {
-    const[containerWidth,setContainerWidth] = useState(0);
-    
-    const[time,setTime] = useState(["00:00"]);
-    const[value,setValue] = useState([0]);
-
-    const[loading,setLoading] = useState(true);
-    const[weekly,setWeekly] = useState(false);
-
-    const[data,setData] = useState([]);    
-
-    // toggle buttons
-    const [alignment, setAlignment] = useState('daily');
-    const handleChange = (event, newAlignment) => {        
-        setAlignment(newAlignment);
-        if(newAlignment === 'weekly'){
-            setWeekly(true);
-            replcaeToWeeklyGraph();
-        }else{
-            setWeekly(false);
-            changeGraphDate(formatDate());
-        }
-    };
-
-    //menu items
-    const [date, setDate] = useState('');
-    const handleChangeDate = (event) => {
-        setLoading(true)
-        setDate(event.target.value);        
-        changeGraphDate(event.target.value);        
-    };
-
-    const changeGraphDate = (selectedDate)=>{
-        for (let i = 0; i < data.length; i++) {            
-            if(selectedDate !== data[i][0].date) continue;
-
-            let _value = [];
-            let _time = [];            
-            for (let j = 0; j < data[i].length; j++) {                
-                _time.push(data[i][j].time);
-                _value.push(data[i][j].value);                                                
-            }                   
-            setTime(_time);
-            setValue(_value);                         
-            setLoading(false);                     
-        }
-    }
-
-    const replcaeToWeeklyGraph = ()=>{
-        let _time = [];
-        let _value = [];
-        for (let i = 0; i < data.length; i++) {
-            const arr = data[i];
-            const split = arr[0].date.split("-");
-            const _currentItemDate =  `${split[2]}.${split[1]}`;
-            let max = data[i][0].value;
-            let index = 0;
-            for (let j = 0; j < arr.length; j++) { 
-                if(max < arr[j].value){
-                    max = arr[j].value;
-                    index = j;
-                }
-            }
-            _time.push(`${data[i][index].time}\n―𝅸𝅷𝅷𝅸𝅷𝅷\n${_currentItemDate}`)
-            _value.push(data[i][index].value);            
-        }
-        setTime(_time);
-        setValue(_value);
-    }
-    
-    const dataBySelectedDate = ()=>{   
-        let result = [];   
-        if(weekly){
-            for (let i = 0; i < data.length; i++) {              
-              for (let j = 0; j < data[i].length; j++) {
-                result.push(data[i][j]);                
-              }            
-            }
-            return result;
-        }
-
-        for (let i = 0; i < data.length; i++) {
-            if(data[i][0].date === date){
-                result = data[i];
-                break;
-            }            
-        }        
-        return result;
-    }
-
-    const formatDate = ()=>{
-        const today = new Date();
-        const dd = today.getDate();
-        const mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();    
-        return `${yyyy}-${mm.toString().padStart(2, '0')}-${dd.toString().padStart(2,'0')}`;
-    }
-    
-    useEffect(()=>{    
-        (async function(){
-            try{                              
-                setData(await fetchData1());                      
-            }catch(e){
-                console.log(e);
-            }finally{
-               setDate(formatDate());
-               if(alignment === 'daily'){
-                    changeGraphDate(formatDate());   
-               }else{
-                     replcaeToWeeklyGraph();
-               }                   
-               const w = document.getElementById("container");
-               setContainerWidth(w.offsetWidth);                                           
-               setLoading(false);
-            }
-        })();        
-    },[loading]);
-    
+const About = () => {  
+  const[loading,setLoading] = useState(true);
+  useEffect(()=>{    
+    setLoading(false);
+  },[])
   return (
-    <section id="info-section" className="info-section">
-        <div id="container" className="container">
+    <section id='about-section' className='about-section'>
+      <div className="container">
+        <div className="wrapper">          
+          <Typography mb={4} fontWeight={500} variant="h4" gutterBottom>
+            Геомагнит бўронлари
+          </Typography>
+          
+          <div className="img">          
             {
-                loading ? <div className="loader"><FadeLoader color="#36d7b7"  /></div>
-                :
-                <div className="flex-box">
-                    <div className="row">                
-                        <ToggleButtonGroup    
-                            className="toggle-btn"           
-                            sx={{width:"9rem"}}
-                            color="primary"
-                            value={alignment}
-                            exclusive
-                            onChange={handleChange}
-                            aria-label="select"                        
-                            >
-                            <ToggleButton value="daily">Кун</ToggleButton>
-                            <ToggleButton value="weekly">Ҳафта</ToggleButton>                    
-                        </ToggleButtonGroup>       
-                        <FormControl variant="filled" sx={{width:"9rem",pointerEvents: weekly ? "none" : "all",opacity: weekly ? "0.4" : "1" }} className="menu-item">
-                            <InputLabel id="input">Сана</InputLabel>
-                            <Select
-                                labelId="date"
-                                id="date"
-                                value={date}
-                                onChange={handleChangeDate}
-                                label="Сана"                                
-                                >                                                          
-                                {                                
-                                    loading ? "" : data.map(arr=>{return <MenuItem key={uuidv4()} value={arr[0].date}>{arr[0].date}</MenuItem> })                                
-                                }                               
-                            </Select>
-                        </FormControl>    
-                    </div>                    
-                    <Stack className="line-chart" >
-                        <LineChart                                                 
-                            xAxis={[{ 
-                                scaleType: 'point',
-                                data: time
-                            }]}
-                            series={[
-                                {
-                                data: value,label:"Кп индеx"
-                                }
-                            ]}                                                  
-                            width={window.screen.width > 765 ? (containerWidth - 80) : (containerWidth  - 32) }
-                            height={window.screen.width > 765 ? 450 : 350}
-                        />
-                    </Stack>       
-                    <LeveleList/>               
-                    <DataTable data={dataBySelectedDate()}/>                    
-                </div>                         
-            }
-            
+              loading ? <MySkeleton/>
+              :
+              <img src={storms} alt="stroms" />
+            }          
+          </div>
+
+          <Typography variant="body1" gutterBottom>
+            <span>Геомагнит бўрон</span> - қуёш шамолининг зарба тўлқини натижасида ер геомагнитосферасининг вақтинчалик бузилиши.
+            Геомагнитосфера - бу ерни ўраб турган ва қуёшдан келадиган зарарли нурланишнинг кўп қисмини қайтарадиган ҳимоя қобиқ. 
+            Бироқ, қуёш шамоли зарба тўлқини геомагнитосферага тушганда, у геомагнит бўронга олиб келиши мумкин.
+          </Typography>
+
+          <Typography variant="body1" gutterBottom>
+            Коронал массанинг чиқарилиши (CМЕс) туфайли юзага келади, бу қуёшдан катта миқдордаги плазма отилишидир. 
+            Бу отилишлар сониясига 2000 километр тезликда ҳаракатланиши ва бир неча кун ичида ерга етиб бориши мумкин.
+            CМЕ ернинг геомагнитосферасига тушганда, у геомагнитосферанинг сиқилишига ва кейин кенгайишига олиб келиши мумкин. 
+            геомагнитосферанинг бундай кенгайиши ва қисқариши бир қатор оқибатларга олиб келиши мумкин, жумладан:
+          </Typography>          
+
+          <ul>
+            <li>
+              Ауроралар: Ауроралар - бу қуёшдан зарядланган заррачаларнинг ер атмосфераси билан ўзаро таъсиридан келиб чиқадиган ранг-баранг ёруғлик.
+              Ауроралар кўпинча қутблар яқинида кўринади, аммо улар кучли геомагнит бўронлар пайтида пастроқ кенгликларда ҳам кўриш мумкин.
+            </li>
+            <li>
+              Электр узилишлари: геомагнит бўронлар электр тармоқларида оқимларни келтириб чиқариши мумкин, бу эса трансформаторларнинг ҳаддан ташқари
+              қизиши ва ишдан чиқишига олиб келиши мумкин. Бу кенг тарқалган электр узилишларига олиб келиши мумкин.
+            </li>
+            <li>
+              Сунъий ёълдош алоқасининг бузилиши: геомагнит бўронлар сунъий ёълдош алоқаларини ҳам бузиши мумкин. Бунинг сабаби шундаки, 
+              қуёшдан зарядланган зарралар сунъий ёълдошлар билан алоқа қилиш учун ишлатиладиган радио сигналларга xалақит бериши мумкин.
+            </li>
+            <li>
+              Навигатсия муаммолари: геомагнит бўронлар ГПС каби навигатсия тизимларига ҳам xалақит бериши мумкин. Бунинг сабаби шундаки,
+              қуёшдан зарядланган зарралар ернинг геомагнит майдонини бузиши мумкин, бу тизимлар ўзларининг жойлашишини аниқлаш учун фойдаланадилар.
+            </li>
+          </ul>
+
+          <Typography variant="body1" gutterBottom>
+            Геомагнит бўронлари бир вақтда ер юзининг йирик майдонларида кузатилади ва кўпчилик буни ҳис қилади. 
+            Айниқса юрак-қон томир, асаб соҳасининг сурункаликасалликларига эга инсонлар бу жараёнларни оғир ўтказишади.
+          </Typography>
+
+          <Typography variant="body1" gutterBottom>
+            Бунда асосан геомагнит бўронлари таъсирида қон айланиши ўзгариши асосий таъсир воситаси ҳисобланади. Чунки эритроцитлар
+            таркибидаги темир моддаси геомагнитдан таъсирланади. Натижада томирларда тиқилмалар ҳосил бўлади ва бу айниқса сурункали
+            касалликлари бор одамлар учун хавфли ҳисобланади.
+          </Typography>
+
+          <Typography variant="body1" gutterBottom>
+            Асаб тизимига эса геомагнит бўрони пайтида гормонлар ишлаб чиқарилиши кучайиши таъсир қилади ва ҳолсизлик, жиззакилик,
+            реакция сусайиши ёки кучайиши каби белгилар пайдо бўлади.
+          </Typography>
+
+          <Typography variant="body1" gutterBottom>
+            Геомагнит бўронлари вақти-вақти билан албатта содир бўлувчи ҳодиса экан, бу жараёндан инсон ўзини ҳимоялаши шарт:
+          </Typography>
+
+          <ul>
+            <li>
+              Бундай кунлар одатда ОАВ орқали эълон қилинади. Асабийлашишдан тийилиш, ҳазми оғир овқатлар истеъмол қилмаслик,
+              спиртли ичимликлар, чекишни чеклаш лозим;
+            </li>
+            <li>
+              Шундай кунларда жисмоний меҳнатни чеклаб туриш, ақлий меҳнатда ҳам организмни зўриқтирмаслик мақсадга мувофиқ;
+            </li>
+            <li>
+              Имкон қадар душ қабул қилиб туриш, илиқ сув ичиш ва салқин хоналарда ўтириш керак;
+            </li>
+            <li>
+              Сурункали касалликлари бор беморлар, айниқса юрак-қон томир касалликлари, жумладан инсульт ўтказганлар ёлғиз қолмасликлари, бир ўзлари автомобиль бошқармасликлари, ҳар бир дори воситасини шифокор назоратида қабул қилишлари даркор;
+            </li>
+            <li>
+              Умуман, геомагнит бўронларига табиатнинг бир ҳодисаси сифатида қараш ва қўрқмаслик лозим. Шунда ўтказиб юбориш осон кечади.
+            </li>
+          </ul>
         </div>
+      </div>
     </section>
   )
 }
-
-export default memo(Info);
+export default memo(About);

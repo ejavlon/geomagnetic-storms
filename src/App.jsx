@@ -1,8 +1,8 @@
-import Header from './components/Header';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
-import Info from './components/Info';
+import Header from './components/Header';
+import Home from './components/Home';
 import Footer from './components/Footer';
-import About from './components/About';
+import Info from './components/Info';
 import NotFound from './components/NotFound';
 
 import './App.css'
@@ -14,8 +14,8 @@ function App() {
       <BrowserRouter>             
         <Header/> 
             <Routes>
-              <Route path="/" exact element={<Info/>}/>
-              <Route path="/about" element={<About/>}/>    
+              <Route path="/" exact element={<Home/>}/>
+              <Route path="/info" element={<Info/>}/>    
               <Route path="*" element={<NotFound/>}/>
             </Routes>           
         <Footer/>                  

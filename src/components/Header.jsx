@@ -15,7 +15,7 @@ const Header = ()=> {
                 </div>   
                 <div className="current-date">
                   <nav>
-                    <NavLink className="about" to="/about">
+                    <NavLink className="about" to="/info">
                         Маълумот
                     </NavLink>  
                   </nav>

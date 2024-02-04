@@ -10,7 +10,7 @@ const Header = ()=> {
             <div className="wrapper">
                 <div className="logo-box">
                   <NavLink to="/">
-                      <img src={logo} alt="logo" className="logo"/>
+                      <img width="70%" height="5rem" src={logo} alt="logo" className="logo"/>
                   </NavLink>                  
                 </div>   
                 <div className="current-date">

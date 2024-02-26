@@ -1,8 +1,9 @@
-import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
 import '../css/Footer.css';
 
-const  Footer = ()=> {    
+import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
+
+export const Footer = memo(() => {    
   return (
     <footer>
         <div className="container">
@@ -12,5 +13,4 @@ const  Footer = ()=> {
         </div>
     </footer>
   )
-}
-export default memo(Footer);
+});

@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 let stDate = "";
 const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
 
@@ -40,9 +42,9 @@ const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
         }
     }
     data[data.length-1].pop();
+
     return data;
 }
-
 
 async function fetchData2(){
     let data = [];

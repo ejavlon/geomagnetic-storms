@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import '../css/NotFound.css';
 
-const NotFound = ()=> {
+export const NotFound = memo(() => {
   return (
     <section className="notfound">
         <div className="container">
@@ -11,5 +11,4 @@ const NotFound = ()=> {
         </div>
     </section>
   )
-}
-export default memo(NotFound);
+});

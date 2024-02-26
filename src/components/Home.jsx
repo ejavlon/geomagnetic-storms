@@ -1,5 +1,6 @@
-import React, { memo, useEffect, useState } from 'react'
+import '../css/Home.css';
 
+import React, { memo, useEffect, useState } from 'react'
 import { LineChart } from '@mui/x-charts/LineChart';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -11,12 +12,10 @@ import Stack from '@mui/material/Stack';
 import { fetchData1 } from './Data';
 import { v4 as uuidv4 } from 'uuid';
 import { FadeLoader } from 'react-spinners';
-import DataTable from './DataTable';
-import LeveleList from './LeveleList';
+import {DataTable} from './DataTable';
+import {LeveleList} from './LeveleList';
 
-import '../css/Home.css';
-
-const Home = ()=> {
+export const Home = memo(() => {
     const[containerWidth,setContainerWidth] = useState(0);
     
     const[time,setTime] = useState(["00:00"]);
@@ -192,6 +191,4 @@ const Home = ()=> {
         </div>
     </section>
   )
-}
-
-export default memo(Home);
+});

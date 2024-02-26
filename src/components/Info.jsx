@@ -1,14 +1,17 @@
-import React, { memo, useEffect, useState } from 'react'
-import Typography from '@mui/material/Typography';
-import MySkeleton from './MySkeleton';
-import storms from '../assets/storms.png';
 import '../css/About.css';
 
-const About = () => {  
+import React, { memo, useEffect, useState } from 'react'
+import Typography from '@mui/material/Typography';
+import {MySkeleton} from './MySkeleton';
+import storms from '../assets/storms.png';
+
+export const Info = memo(() => {  
   const[loading,setLoading] = useState(true);
+  
   useEffect(()=>{    
     setLoading(false);
-  },[])
+  },[]);
+
   return (
     <section id='about-section' className='about-section'>
       <div className="container">
@@ -18,7 +21,7 @@ const About = () => {
           </Typography>
           
           <div className="img">          
-            {
+            {              
               loading ? <MySkeleton/>
               :
               <img src={storms} alt="stroms" />
@@ -99,5 +102,4 @@ const About = () => {
       </div>
     </section>
   )
-}
-export default memo(About);
+});

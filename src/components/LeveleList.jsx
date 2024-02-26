@@ -1,7 +1,7 @@
-import React, { memo } from 'react'
 import '../css/LevelList.css';
+import React, { memo } from 'react'
 
-const LeveleList =()=> {
+export const LeveleList = memo(() => {
   return (
     <div className="level-list">
         <div className="level">
@@ -24,6 +24,4 @@ const LeveleList =()=> {
         </div>
     </div>
   )
-}
-
-export default memo(LeveleList);
+});

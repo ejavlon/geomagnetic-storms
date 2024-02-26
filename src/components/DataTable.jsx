@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { v4 as uuidv4 } from 'uuid';
 
-const DataTable = ({data})=> {
+export const DataTable = memo(({data}) => {
   return (
     <TableContainer component={Paper} sx={{marginTop:"2rem"}}>
       <Table aria-label="simple table">
@@ -35,5 +35,4 @@ const DataTable = ({data})=> {
       </Table>
     </TableContainer>
   )
-}
-export default memo(DataTable);
+});

@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import '../css/Header.css';
 
-const Header = ()=> {
+export const Header = memo(() => {
   return (
     <header id="main-header" className="main-header">
         <div className="container">
@@ -24,6 +24,4 @@ const Header = ()=> {
         </div>
     </header>
   )
-}
-
-export default memo(Header);
+});

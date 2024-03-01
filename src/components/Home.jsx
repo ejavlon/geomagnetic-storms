@@ -163,7 +163,7 @@ export const Home = memo(() => {
                                 label="Сана"                                
                                 >                                                          
                                 {                                
-                                    loading ? "" : data.map(arr=>{return <MenuItem key={uuidv4()} value={arr[0].date}>{arr[0].date}</MenuItem> })                                
+                                    data.map(arr=> (<MenuItem key={uuidv4()} value={arr[0].date}>{arr[0].date}</MenuItem>))
                                 }                               
                             </Select>
                         </FormControl>    
@@ -174,11 +174,9 @@ export const Home = memo(() => {
                                 scaleType: 'point',
                                 data: time
                             }]}
-                            series={[
-                                {
+                            series={[{
                                 data: value,label:"Кп индеx"
-                                }
-                            ]}                                                  
+                            }]}                                                  
                             width={window.screen.width > 765 ? (containerWidth - 80) : (containerWidth  - 32) }
                             height={window.screen.width > 765 ? 450 : 350}
                         />

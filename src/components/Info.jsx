@@ -1,5 +1,4 @@
 import '../css/About.css';
-
 import React, { memo, useEffect, useState } from 'react'
 import Typography from '@mui/material/Typography';
 import {MySkeleton} from './MySkeleton';

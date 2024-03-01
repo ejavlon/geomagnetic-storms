@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
 import '../css/NotFound.css';
+import React, { memo } from 'react';
 
 export const NotFound = memo(() => {
   return (

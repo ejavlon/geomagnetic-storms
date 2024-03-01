@@ -19,6 +19,7 @@ export const DataTable = memo(({data}) => {
             <TableCell align="center">Вақт</TableCell>
             <TableCell align="center">Кп индеx(max=9)</TableCell>            
           </TableRow>
+          {console.log('head')}
         </TableHead>
         <TableBody>
           {data.map((row) => (                        

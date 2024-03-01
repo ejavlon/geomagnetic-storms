@@ -1,7 +1,7 @@
 import '../css/LevelList.css';
 import React, { memo } from 'react'
 
-export const LeveleList = memo(() => {
+export const LeveleList = memo(() => {    
   return (
     <div className="level-list">
         <div className="level">

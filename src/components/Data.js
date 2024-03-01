@@ -3,7 +3,7 @@ import { useMemo } from "react";
 let stDate = "";
 const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
 
- export async function fetchData1() {        
+ export const fetchData1 = async() => {        
     let data = [];
     const url = "https://services.swpc.noaa.gov/text/3-day-geomag-forecast.txt";
 
@@ -46,7 +46,8 @@ const time = ["02:00","05:00","08:00","11:00","14:00","17:00","20:00","23:00"];
     return data;
 }
 
-async function fetchData2(){
+
+const fetchData2 = async() => {
     let data = [];
     try{
         const response = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");        
@@ -78,9 +79,7 @@ async function fetchData2(){
     return data;
 }
 
-
-
-const getKValues = async(rows,columndIndex,day)=>{    
+const getKValues = async(rows,columndIndex,day) => {    
     let data = [];
     let _date = new Date(stDate);
     _date.setDate(_date.getDate() + day);    
